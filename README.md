@@ -22,4 +22,4 @@ Example usage
 	}
 
 You can validate this is correctly preventing optimisation by running
-something like `gcc -O3 -S foo.c` and examining the output in `foo.s`.
+`gcc -O3 -S foo.c` and examining the output in `foo.s`.
