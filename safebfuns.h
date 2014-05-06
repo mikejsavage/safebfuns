@@ -37,8 +37,8 @@ NOINLINE void explicit_bzero( void * const buf, const size_t n ) {
 
 NOINLINE int timingsafe_bcmp( const void * const b1, const void * const b2, const size_t n ) {
 	size_t i;
-	const unsigned char * p1 = b1;
-	const unsigned char * p2 = b2;
+	const unsigned char * const p1 = b1;
+	const unsigned char * const p2 = b2;
 	int result = 0;
 
 	for( i = 0; i < n; i++ ) {
