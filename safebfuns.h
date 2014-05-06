@@ -2,14 +2,28 @@
 
 #include <string.h>
 
-#if __GNUC__ > 4 || ( __GNUC__ == 4 && __GNUC_MINOR__ > 4 )
+#if __clang__
+	// http://clang.llvm.org/docs/LanguageExtensions.html#feature-checking-macros
+	// http://lists.cs.uiuc.edu/pipermail/llvmdev/2013-April/061527.html
+	#if __has_attribute( noinline )
+		#pragma clang optimize push
+		#pragma clang optimize ( "O0" )
+		#define NOINLINE __attribute__ (( noinline ))
+	#else
+		#error "require clang that supports noinline"
+	#endif
+#elif __GNUC__
 	// http://gcc.gnu.org/onlinedocs/gcc/Function-Specific-Option-Pragmas.html
 	// http://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html
-	#pragma GCC push_options
-	#pragma GCC optimize ( "-O0" )
-	#define NOINLINE __attribute__ (( noinline ))
+	#if __GNUC__ > 4 || ( __GNUC__ == 4 && __GNUC_MINOR__ > 4 )
+		#pragma GCC push_options
+		#pragma GCC optimize ( "-O0" )
+		#define NOINLINE __attribute__ (( noinline ))
+	#else
+		#error "require gcc >= 4.4"
+	#endif
 #else
-	#error "require gcc >= 4.4"
+	#error "unrecognised compiler"
 #endif
 
 NOINLINE void explicit_bzero( void * const buf, const size_t n ) {
@@ -34,4 +48,8 @@ NOINLINE int timingsafe_bcmp( const void * const b1, const void * const b2, cons
 	return result;
 }
 
-#pragma GCC pop_options
+#ifdef __clang__
+	#pragma clang optimize pop
+#else
+	#pragma GCC pop_options
+#endif

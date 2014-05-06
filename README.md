@@ -2,8 +2,22 @@ This repository contains a single C header file which defines
 `explicit_bzero` and `timingsafe_bcmp` with pragmas to ensure calls to
 them are not optimised out of the program or otherwise.
 
-It is currently only implemented for GCC >= 4.4 and should fail to
-compile with other compilers.
+It is currently implemented for:
+
+* GCC >= 4.4
+* clang, see below
+
+It should fail to compile with anything else.
+
+
+Clang
+-----
+
+I'm not able to find anywhere mentioning exactly what version
+`__attribute__ (( noinline ))` and `#pragma clang optimize` were added,
+and I don't think you can explicitly test for the latter. I have only
+tested with clang 3.4 so if you want to use an older version, you should
+verify clang is producing correct assembly.
 
 
 Example usage
