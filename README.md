@@ -14,9 +14,10 @@ Example usage
 	int main() {
 		char b1[ 128 ];
 		char b2[ 128 ];
+		char b3[ 128 ];
 	
 		explicit_bzero( b1, 128 );
-		explicit_bzero( b2, 128 );
+		explicit_bzero( b3, 128 );
 	
 		return timingsafe_bcmp( b1, b2, 128 );
 	}
