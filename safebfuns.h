@@ -3,8 +3,10 @@
 #include <string.h>
 
 #if __clang__
-	// http://clang.llvm.org/docs/LanguageExtensions.html#feature-checking-macros
-	// http://lists.cs.uiuc.edu/pipermail/llvmdev/2013-April/061527.html
+	/*
+	 * http://clang.llvm.org/docs/LanguageExtensions.html#feature-checking-macros
+	 * http://lists.cs.uiuc.edu/pipermail/llvmdev/2013-April/061527.html
+	 */
 	#if __has_attribute( noinline )
 		#pragma clang optimize push
 		#pragma clang optimize ( "O0" )
@@ -13,8 +15,10 @@
 		#error "require clang that supports noinline"
 	#endif
 #elif __GNUC__
-	// http://gcc.gnu.org/onlinedocs/gcc/Function-Specific-Option-Pragmas.html
-	// http://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html
+	/*
+	 * http://gcc.gnu.org/onlinedocs/gcc/Function-Specific-Option-Pragmas.html
+	 * http://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html
+	 */
 	#if __GNUC__ > 4 || ( __GNUC__ == 4 && __GNUC_MINOR__ > 4 )
 		#pragma GCC push_options
 		#pragma GCC optimize ( "-O0" )
