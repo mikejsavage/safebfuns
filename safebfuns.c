@@ -1,3 +1,5 @@
+/* Public domain */
+
 #include <string.h>
 
 #if __clang__
