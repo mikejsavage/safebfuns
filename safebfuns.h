@@ -52,10 +52,10 @@ NOINLINE int timingsafe_bcmp( const void * const b1, const void * const b2, cons
 	int result = 0;
 
 	for( i = 0; i < n; i++ ) {
-		result |= p1[ i ] != p2[ i ];
+		result |= p1[ i ] ^ p2[ i ];
 	}
 
-	return result;
+	return result != 0;
 }
 
 #endif /* #ifdef _SAFEBFUNS_H_ */
