@@ -1,6 +1,7 @@
-This repository contains a C source and header file which defines
-`explicit_bzero` and `timingsafe_bcmp` with preprocessor directives to
-ensure calls to them are not optimised out of the program or otherwise.
+This repository contains a C source and header file which define
+`explicit_bzero` and `timingsafe_bcmp`. They include preprocessor
+directives to ensure that the calls are not optimised out of the program
+or otherwise.
 
 It is currently implemented for:
 
