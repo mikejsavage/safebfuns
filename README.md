@@ -37,4 +37,5 @@ Example usage
 	}
 
 You can validate this is correctly preventing optimisation by running
-`gcc -O3 -S foo.c` and examining the output in `foo.s`.
+`gcc -O3 -S foo.c safebfuns.c` and examining the output in `foo.s` and
+`safebfuns.s`.
