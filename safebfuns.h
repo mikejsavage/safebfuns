@@ -26,6 +26,12 @@
 	#error "unrecognised compiler"
 #endif
 
+NOINLINE void explicit_bzero( void * const buf, const size_t n );
+NOINLINE int timingsafe_bcmp( const void * const b1, const void * const b2, const size_t n );
+
+#ifndef _SAFEBFUNS_H_
+#define _SAFEBFUNS_H_
+
 NOINLINE void explicit_bzero( void * const buf, const size_t n ) {
 	size_t i;
 	unsigned char * p = buf;
@@ -47,6 +53,8 @@ NOINLINE int timingsafe_bcmp( const void * const b1, const void * const b2, cons
 
 	return result;
 }
+
+#endif /* #ifdef _SAFEBFUNS_H_ */
 
 #ifdef __clang__
 	#pragma clang optimize pop
