@@ -72,9 +72,9 @@ NOINLINE int timingsafe_bcmp( const void * const b1, const void * const b2, cons
 #include <limits.h>
 #include <string.h>
 
-NOINLINE int timingsafe_memcmp( const void * b1, const void * b2, const size_t len ) {
+NOINLINE int timingsafe_memcmp( const void * const b1, const void * const b2, const size_t len ) {
 	const unsigned char * p1 = b1;
-	const unsigned char * *p2 = b2;
+	const unsigned char * p2 = b2;
 	size_t i;
 	int res = 0, done = 0;
 
