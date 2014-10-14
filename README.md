@@ -33,8 +33,10 @@ Example usage
 	
 		explicit_bzero( b1, 128 );
 		explicit_bzero( b3, 128 );
+
+		const int ret = timingsafe_memcmp( b1, b2, 128 );
 	
-		return timingsafe_bcmp( b1, b2, 128 );
+		return timingsafe_bcmp( b1, b2, 128 ) + ret;
 	}
 
 You can validate this is correctly preventing optimisation by running
