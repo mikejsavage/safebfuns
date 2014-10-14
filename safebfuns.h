@@ -28,6 +28,6 @@
 
 NOINLINE void explicit_bzero( void * const buf, const size_t n );
 NOINLINE int timingsafe_bcmp( const void * const b1, const void * const b2, const size_t n );
-NOINLINE int timingsafe_memcmp( const void * b1, const void * b2, const size_t len );
+NOINLINE int timingsafe_memcmp( const void * const b1, const void * const b2, const size_t len );
 
 #undef NOINLINE
