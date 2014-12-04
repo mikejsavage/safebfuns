@@ -5,14 +5,13 @@
 #if __clang__
 	/*
 	 * http://clang.llvm.org/docs/LanguageExtensions.html#feature-checking-macros
-	 * http://lists.cs.uiuc.edu/pipermail/llvmdev/2013-April/061527.html
+	 * https://www.mail-archive.com/cfe-commits@cs.uiuc.edu/msg97459.html
 	 */
-	#if __has_attribute( noinline )
-		#pragma clang optimize push
-		#pragma clang optimize ( "O0" )
+	#if __clang_major__ > 3 || ( __clang_major__ == 3 && __clang_minor__ >= 5 )
+		#pragma clang optimize off
 		#define NOINLINE __attribute__ (( noinline ))
 	#else
-		#error "require clang that supports noinline"
+		#error "require clang >= 3.5"
 	#endif
 #elif __GNUC__
 	/*
@@ -101,7 +100,7 @@ NOINLINE int timingsafe_memcmp( const void * const b1, const void * const b2, co
 /* Public domain */
 
 #ifdef __clang__
-	#pragma clang optimize pop
+	#pragma clang optimize on
 #else
 	#pragma GCC pop_options
 #endif
