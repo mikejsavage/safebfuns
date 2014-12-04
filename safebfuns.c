@@ -18,7 +18,7 @@
 	 * http://gcc.gnu.org/onlinedocs/gcc/Function-Specific-Option-Pragmas.html
 	 * http://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html
 	 */
-	#if __GNUC__ > 4 || ( __GNUC__ == 4 && __GNUC_MINOR__ > 4 )
+	#if __GNUC__ > 4 || ( __GNUC__ == 4 && __GNUC_MINOR__ >= 4 )
 		#pragma GCC push_options
 		#pragma GCC optimize ( "-O0" )
 		#define NOINLINE __attribute__ (( noinline ))
