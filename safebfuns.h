@@ -33,5 +33,7 @@ NOOPT NOINLINE void explicit_bzero( void * const buf, const size_t n );
 NOOPT NOINLINE int timingsafe_bcmp( const void * const b1, const void * const b2, const size_t n );
 NOOPT NOINLINE int timingsafe_memcmp( const void * const b1, const void * const b2, const size_t len );
 
+#ifndef __SAFEBFUNS_INTERNAL
 #undef NOOPT
 #undef NOINLINE
+#endif
